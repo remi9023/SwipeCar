@@ -5,40 +5,26 @@ using UnityEngine;
 public class CarController : MonoBehaviour
 {
     float speed = 0f; // 현재 속도
-    public float maxSpeed = 5f; // 최대 속도
-    public float acceleration = 2f; // 가속 속도
-    public float deceleration = 2f; // 감속 속도
-    private bool isAccelerating = false; // 가속 중인지 확인
+    Vector2 startPos;
 
     void Update()
     {
         if (Input.GetMouseButtonDown(0)) // 마우스 왼쪽 버튼 클릭
         {
-            isAccelerating = true; // 가속 상태 활성화
+            startPos = Input.mousePosition; // 클릭했을 때 마우스 좌표 괄호 벗어났을 때 사라지면 안되기 때문에 제일 위에 변수를 선언함.
         }
 
-        if (Input.GetMouseButtonUp(0)) // 마우스 왼쪽 버튼을 뗌
+        if (Input.GetMouseButtonUp(0)) // 마우스 왼쪽 버튼 클릭
         {
-            isAccelerating = false; // 가속 상태 비활성화
+            Vector2 endPos = Input.mousePosition;   // 마우스 뗐을 때 좌표 어차피 괄호안에서만 쓸거라 날아가도 괜찮아서 괄호 안에서만 씀.
+            float swipeLength = endPos.x - startPos.x; // 마우스 드래그한 거리
+            swipeLength = Mathf.Abs(swipeLength);
+            speed = swipeLength / 1500.0f; // 스와이프 길이의 속도를 변경해줌 (1500분의 거리로 비율 조정)    
         }
 
-        if (isAccelerating)
-        {
-            // 가속
-            speed += acceleration * Time.deltaTime;
-            if (speed > maxSpeed)
-                speed = maxSpeed; // 최대 속도를 초과하지 않도록 제한
-        }
-        else
-        {
-            // 감속
-            speed -= deceleration * Time.deltaTime;
-            if (speed < 0f)
-                speed = 0f; // 속도가 음수가 되지 않도록 설정
-        }
 
-        // 자동차를 오른쪽으로 이동
-        transform.Translate(speed * Time.deltaTime, 0f, 0f);
+        transform.Translate(speed, 0f, 0f);
+        speed *= 0.98f;
     }
 }
 
