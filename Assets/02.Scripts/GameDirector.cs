@@ -1,16 +1,20 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class GameDirector : MonoBehaviour
 {
     public GameObject car;
     public GameObject flag;
     public Text distance_Text;
+    public GameObject restart_Button;
+    bool GameObject  = false;
        void Start()
     {
-    
+        restart_Button.SetActive(false);
     }
 
 
@@ -25,6 +29,7 @@ public class GameDirector : MonoBehaviour
         if (length < 0)
         {
             distance_Text.text = "게임오버";
+            restart_Button.SetActive(true); 
         }
         else
         {

@@ -6,7 +6,7 @@ public class CarController : MonoBehaviour
 {
     float speed = 0f; // 현재 속도
     Vector2 startPos;
-
+    bool isGameStart = false;
     void Update()
     {
         if (Input.GetMouseButtonDown(0)) // 마우스 왼쪽 버튼 클릭
@@ -19,12 +19,22 @@ public class CarController : MonoBehaviour
             Vector2 endPos = Input.mousePosition;   // 마우스 뗐을 때 좌표 어차피 괄호안에서만 쓸거라 날아가도 괜찮아서 괄호 안에서만 씀.
             float swipeLength = endPos.x - startPos.x; // 마우스 드래그한 거리
             swipeLength = Mathf.Abs(swipeLength); // absolute value
-            speed = swipeLength/1500.0f; // 스와이프 길이의 속도를 변경해줌 (1500분의 거리로 비율 조정)    
+            speed = swipeLength/1500.0f; // 스와이프 길이의 속도를 변경해줌 (1500분의 거리로 비율 조정)
+            GetComponent<AudioSource>().Play(); //효과음 내기
+            isGameStart = true;                             // 
         }
 
 
         transform.Translate(speed, 0f, 0f);
         speed *= 0.98f;
+
+        if (speed <0.01f && isGameStart.Equals(true))
+        {
+            speed = 0f;
+            //버튼을 보이게 하면 됨.
+            GameObject.Find("GameDirector").GetComponent<GameDirector>().restart_Button.SetActive(true);
+        }
     }
+
 }
 
