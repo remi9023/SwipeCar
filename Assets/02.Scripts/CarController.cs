@@ -19,7 +19,7 @@ public class CarController : MonoBehaviour
             Vector2 endPos = Input.mousePosition;   // 마우스 뗐을 때 좌표 어차피 괄호안에서만 쓸거라 날아가도 괜찮아서 괄호 안에서만 씀.
             float swipeLength = endPos.x - startPos.x; // 마우스 드래그한 거리
             swipeLength = Mathf.Abs(swipeLength);
-            speed = swipeLength / 1500.0f; // 스와이프 길이의 속도를 변경해줌 (1500분의 거리로 비율 조정)    
+            speed = swipeLength/1500.0f; // 스와이프 길이의 속도를 변경해줌 (1500분의 거리로 비율 조정)    
         }
 
 
