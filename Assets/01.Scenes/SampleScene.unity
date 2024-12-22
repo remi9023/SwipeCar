@@ -413,7 +413,7 @@ GameObject:
   - component: {fileID: 491718911}
   - component: {fileID: 491718910}
   m_Layer: 5
-  m_Name: restartButton
+  m_Name: RestartButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -436,7 +436,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 300}
   m_SizeDelta: {x: 500, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &491718910
@@ -815,7 +815,7 @@ MonoBehaviour:
   car: {fileID: 235405274}
   flag: {fileID: 243716489}
   distance_Text: {fileID: 994808016}
-  restartButton: {fileID: 0}
+  restartButton: {fileID: 491718908}
 --- !u!4 &997015583
 Transform:
   m_ObjectHideFlags: 0
