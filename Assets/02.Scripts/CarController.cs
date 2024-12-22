@@ -27,13 +27,7 @@ public class CarController : MonoBehaviour
 
         transform.Translate(speed, 0f, 0f);
         speed *= 0.98f;
-
-        if (speed <0.01f && isGameStart.Equals(true))
-        {
-            speed = 0f;
-            //버튼을 보이게 하면 됨.
-            GameObject.Find("GameDirector").GetComponent<GameDirector>().restart_Button.SetActive(true);
-        }
+                
     }
 
 }
